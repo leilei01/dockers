@@ -1,4 +1,4 @@
-M centos:6.7
+FROM centos:6.7
 
 RUN yum install -y wget xz tar
 RUN yum install -y zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel libssl-dev libffi-devel libxml2 libxml2-devel libxslt libxslt-devel libxml2-dev libxslt1-dev zlib1g-dev libffi-dev
