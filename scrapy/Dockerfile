@@ -9,7 +9,9 @@ RUN yum install -y zlib-devel bzip2-devel zlib-devel bzip2-devel openssl-devel z
 RUN mkdir -p /home/source 
 WORKDIR /home/source RUN wget https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tar.xz
 WORKDIR /home/source RUN tar xf Python-2.7.11.tar.xz
-WORKDIR /home/source/Python-2.7.11 RUN ./configure RUN make RUN make install
+WORKDIR /home/source/Python-2.7.11 RUN ./configure 
+WORKDIR /home/source/Python-2.7.11 RUN make&& make install
+RUN python -V
 RUN wget https://bootstrap.pypa.io/ez_setup.py -O - | python 
 RUN easy_install pip
 RUN pip install scrapy
