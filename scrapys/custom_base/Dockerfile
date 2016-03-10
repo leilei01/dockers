@@ -17,4 +17,6 @@ RUN python -V
 RUN wget https://bootstrap.pypa.io/ez_setup.py -O - | python
 RUN easy_install pip
 RUN pip install scrapy
+WORKDIR /home
+RUN rm -rf source
 CMD ["scrapy"]
