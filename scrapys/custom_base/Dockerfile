@@ -4,7 +4,7 @@ MAINTAINER leilei01 "benjaminlei@126.com"
 ENV LANG en_US.UTF-8 ENV LC_ALL en_US.UTF-8
          
 RUN yum install -y wget xz tar
-RUN yum install -y zlib-devel bzip2-devel zlib-devel bzip2-devel openssl-devel zlib-devel bzip2-devel openssl-devel ncurses-devel zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel python-dev curl libffi-devel gcc libgcc libxml2 libxml2-devel libxslt libxslt-devel                                             
+RUN yum install -y zlib-devel bzip2-devel zlib-devel bzip2-devel openssl-devel zlib-devel bzip2-devel ncurses-devel ncurses-devel sqlite-devel python-dev curl libffi-devel gcc libgcc libxml2 libxml2-devel libxslt libxslt-devel mysql-devel                                             
          
 RUN mkdir -p /home/source
 WORKDIR /home/source
