@@ -7,7 +7,16 @@ RUN yum install -y wget xz tar
 RUN yum install -y zlib-devel bzip2-devel zlib-devel bzip2-devel openssl-devel zlib-devel bzip2-devel ncurses-devel ncurses-devel sqlite-devel python-dev curl libffi-devel gcc libgcc libxml2 libxml2-devel libxslt libxslt-devel mysql-devel                                             
          
 RUN mkdir -p /home/source
-WORKDIR /home/source
+#install MySQL-python 
+WORKDIR /home/source/
+RUN yum install -y gcc gcc-c++ cmake ncurses-devel bison
+RUN wget -c http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-server-5.5.30-1.el6.x86_64.rpm
+RUN rpm -ivh MySQL-server-5.5.30-1.el6.x86_64.rpm
+RUN wget -c http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-client-5.5.30-1.el6.x86_64.rpm
+RUN rpm -ivh MySQL-client-5.5.30-1.el6.x86_64.rpm
+RUN wget -c http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-devel-5.5.30-1.el6.x86_64.rpm
+RUN rpm -ivh MySQL-devel-5.5.30-1.el6.x86_64.rpm
+
 RUN wget https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tar.xz
 RUN tar xf Python-2.7.11.tar.xz
 WORKDIR /home/source/Python-2.7.11
@@ -23,14 +32,6 @@ RUN easy_install pip
 #RUN pwd
 #RUN python setup.py install
 RUN pip install thrift
-#install MySQL-python 
-WORKDIR /home/source/
-RUN wget -c http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-server-5.5.30-1.el6.x86_64.rpm
-RUN wget -c http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-client-5.5.30-1.el6.x86_64.rpm
-RUN wget -c http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-devel-5.5.30-1.el6.x86_64.rpm
-RUN rpm -ivh MySQL-server-5.5.30-1.el6.x86_64.rpm
-RUN rpm -ivh MySQL-client-5.5.30-1.el6.x86_64.rpm
-RUN rpm -ivh MySQL-devel-5.5.30-1.el6.x86_64.rpm
 #install APScheduler 
 RUN pip install APScheduler
 #RUN wget -c https://pypi.python.org/packages/c8/40/16a2df29261992cee18f6cba9731d9101302cc76d24794a332f6e567fe2f/APScheduler-3.2.0.tar.gz
