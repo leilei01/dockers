@@ -56,5 +56,5 @@ WORKDIR /home
 RUN rm -rf source
 #useradd work
 RUN useradd work
-USER work
+#USER work
 CMD ["/bin/bash"]
