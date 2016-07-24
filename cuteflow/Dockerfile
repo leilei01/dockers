@@ -11,21 +11,20 @@ RUN mkdir -p /home/source
 WORKDIR /home/source/
 RUN yum install -y gcc gcc-c++ cmake ncurses-devel bison
 RUN useradd -s /sbin/nologin mysql
-RUN wget  http://mysql.ntu.edu.tw/Downloads/MySQL-5.5/mysql-5.5.30.tar.gz \
-         && wget  http://mysql.ntu.edu.tw/Downloads/MySQL-5.5/mysql-5.5.30.tar.gz \
-         && tar xvf mysql-5.5.30.tar.gz \
-         && cd mysql-5.5.30 \
+RUN wget http://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.50.tar.gz \
+         && tar xvf mysql-5.5.50.tar.gz \
+         && cd mysql-5.5.50 \
          && cmake -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DEXTRA_CHARSETS=all -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_MEMORY_STORAGE_ENGINE=1 -DWITH_READLINE=1 -DENABLED_LOCAL_INFILE=1 -DMYSQL_DATADIR=/data/mysql/data  -DMYSQL_USER=mysql -DMYSQL_TCP_PORT=3306 \
          && make && make install
 RUN cp /etc/my.cnf /etc/my.cnf.bak \
          && cp -f support-files/my-innodb-heavy-4G.cnf /etc/my.cnf 
 
-RUN wget -c http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-server-5.5.30-1.el6.x86_64.rpm
-RUN rpm -ivh MySQL-server-5.5.30-1.el6.x86_64.rpm
-RUN wget -c http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-client-5.5.30-1.el6.x86_64.rpm
-RUN rpm -ivh MySQL-client-5.5.30-1.el6.x86_64.rpm
-RUN wget -c http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-devel-5.5.30-1.el6.x86_64.rpm
-RUN rpm -ivh MySQL-devel-5.5.30-1.el6.x86_64.rpm
+#RUN wget -c http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-server-5.5.30-1.el6.x86_64.rpm
+#RUN rpm -ivh MySQL-server-5.5.30-1.el6.x86_64.rpm
+#RUN wget -c http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-client-5.5.30-1.el6.x86_64.rpm
+#RUN rpm -ivh MySQL-client-5.5.30-1.el6.x86_64.rpm
+#RUN wget -c http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-devel-5.5.30-1.el6.x86_64.rpm
+#RUN rpm -ivh MySQL-devel-5.5.30-1.el6.x86_64.rpm
 
 RUN wget https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tar.xz
 RUN tar xf Python-2.7.11.tar.xz
